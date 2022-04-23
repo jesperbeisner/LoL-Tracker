@@ -1,0 +1,15 @@
+.background-color {
+    background-color: #eeeeee;
+}
+
+.background-color-white {
+    background-color: white;
+}
+
+.nav-shadow-bottom {
+    box-shadow: 0 1px 5px #333333;
+}
+
+.card-blue {
+    border-top: 2px solid #0d6efd;
+}

@@ -1,0 +1,16 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+
+    App\Service\TelegramApiService:
+        arguments:
+            $telegramApiKey: '%env(resolve:TELEGRAM_API_KEY)%'
+            $telegramChatId: '%env(resolve:TELEGRAM_CHAT_ID)%'

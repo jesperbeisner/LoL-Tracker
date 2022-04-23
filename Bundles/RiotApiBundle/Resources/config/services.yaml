@@ -1,0 +1,7 @@
+services:
+  Jesperbeisner\RiotApiBundle\Manager\RiotApiManager:
+    arguments:
+      $riotApiKey: '%env(resolve:RIOT_API_KEY)%'
+      $httpClient: '@http_client'
+      $cache: '@cache.app'
+      $logger: '@logger'

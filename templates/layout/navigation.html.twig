@@ -1,0 +1,12 @@
+{% set routeName = app.request.get('_route') %}
+<nav class="nav-shadow-bottom background-color-white">
+    <div class="container-fluid">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                {% include 'layout/navigation-item.html.twig' with {'title': 'Index', 'route': 'index'} %}
+                {% include 'layout/navigation-item.html.twig' with {'title': 'Summoners', 'route': 'summoners'} %}
+                {% include 'layout/navigation-item.html.twig' with {'title': 'Champions', 'route': 'champions'} %}
+            </ul>
+        </header>
+    </div>
+</nav>
