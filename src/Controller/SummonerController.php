@@ -14,6 +14,8 @@ class SummonerController extends AbstractController
     #[Route('/summoners', name: 'summoners')]
     public function summoners(SummonerRepository $summonerRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('summoner/summoners.html.twig', [
             'summoners' => $summonerRepository->findAll(),
         ]);

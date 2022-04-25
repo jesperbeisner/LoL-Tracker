@@ -22,6 +22,8 @@ class IndexController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(Request $request, EntityManagerInterface $entityManager, RiotApiManager $riotApiManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $summoner = new Summoner();
 
         $summonerForm = $this->createForm(SummonerType::class, $summoner);
@@ -61,6 +63,8 @@ class IndexController extends AbstractController
     #[Route('/champions', name: 'champions')]
     public function champions(RiotApiManager $riotApiManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         /** @var LoLChampionApiService $championApiService */
         $championApiService = $riotApiManager->getApiService(LoLChampionApiService::class);
 

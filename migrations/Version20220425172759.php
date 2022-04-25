@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220423052515 extends AbstractMigration
+final class Version20220425172759 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,6 +22,7 @@ final class Version20220423052515 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE active_match (id INT AUTO_INCREMENT NOT NULL, summoner_id INT NOT NULL, game_id BIGINT NOT NULL, active TINYINT(1) NOT NULL, created DATETIME NOT NULL, updated DATETIME DEFAULT NULL, INDEX IDX_FC667743BC01C675 (summoner_id), INDEX game_id_index (game_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE summoner (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(255) NOT NULL, notes VARCHAR(255) NOT NULL, server VARCHAR(255) NOT NULL, lol_id VARCHAR(255) NOT NULL, lol_account_id VARCHAR(255) NOT NULL, lol_puuid VARCHAR(255) NOT NULL, summoner_level INT NOT NULL, profile_icon_id INT NOT NULL, active TINYINT(1) NOT NULL, revision_date DATETIME NOT NULL, created DATETIME NOT NULL, updated DATETIME DEFAULT NULL, INDEX username_index (username), INDEX lol_id_index (lol_id), INDEX lol_account_id_index (lol_account_id), UNIQUE INDEX lol_puuid_index (lol_puuid), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, roles JSON NOT NULL, active TINYINT(1) NOT NULL, created DATETIME NOT NULL, updated DATETIME DEFAULT NULL, UNIQUE INDEX username_index (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE active_match ADD CONSTRAINT FK_FC667743BC01C675 FOREIGN KEY (summoner_id) REFERENCES summoner (id)');
     }
 
@@ -31,5 +32,6 @@ final class Version20220423052515 extends AbstractMigration
         $this->addSql('ALTER TABLE active_match DROP FOREIGN KEY FK_FC667743BC01C675');
         $this->addSql('DROP TABLE active_match');
         $this->addSql('DROP TABLE summoner');
+        $this->addSql('DROP TABLE user');
     }
 }

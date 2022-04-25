@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Command;
 
 use App\Entity\ActiveMatch;
@@ -8,7 +10,6 @@ use App\Repository\ActiveMatchRepository;
 use App\Repository\SummonerRepository;
 use App\Service\TelegramApiService;
 use Doctrine\ORM\EntityManagerInterface;
-use Jesperbeisner\RiotApiBundle\Data\ChampionData;
 use Jesperbeisner\RiotApiBundle\Manager\RiotApiManager;
 use Jesperbeisner\RiotApiBundle\Service\LoLChampionApiService;
 use Jesperbeisner\RiotApiBundle\Service\LoLSpectatorApiService;
@@ -28,8 +29,7 @@ class CheckSummonersCommand extends Command
         EntityManagerInterface $entityManager,
         RiotApiManager $riotApiManager,
         TelegramApiService $telegramApiService,
-    )
-    {
+    ) {
         $this->entityManager = $entityManager;
         $this->riotApiManager = $riotApiManager;
         $this->telegramApiService = $telegramApiService;
